@@ -166,6 +166,7 @@
             </nav>
 
             <!--*Dark Mode toggle*-->
+            <!--Don't need toggle, could comment out for temporary removal-->
             <button id="dark-mode-toggle">
                 <!--*Moon is an inline SVG so you can edit the color if needed*-->
                 <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480" xml:space="preserve"><path d="M459.782 347.328c-4.288-5.28-11.488-7.232-17.824-4.96-17.76 6.368-37.024 9.632-57.312 9.632-97.056 0-176-78.976-176-176 0-58.4 28.832-112.768 77.12-145.472 5.472-3.712 8.096-10.4 6.624-16.832S285.638 2.4 279.078 1.44C271.59.352 264.134 0 256.646 0c-132.352 0-240 107.648-240 240s107.648 240 240 240c84 0 160.416-42.688 204.352-114.176 3.552-5.792 3.04-13.184-1.216-18.496z"/></svg>
@@ -192,18 +193,20 @@
                     <p>
                         Talk about the other services they do with keywords and locations where they serve.  Try to make this 2-3 lines tall.
                     </p>
-                    <!--noopener prevents link from having access to doc that opened it.
+                    <!--noopener prevents link from having access to page that opened it.
                         _blank opens a new tab-->
                     <a class="button-solid" href="/contact.html" target="_blank" rel="noopener">
                         Main Call To Action
+                        <!--CTA to Donate-->
                     </a>
                 </div>
             </div>
-            <!---Picture container used to hold media queries that get specific image file
-                 according to size. img element is a back up. width and height styled inline 
+            <!---Picture: used to manage media queries that get corresponding img that 
+                 is appropriate size. <img> always proceeds <source> for backup if browser
+                  doesn't accept <picture> or neither media query returns true. width and height styled inline 
                 so that browser leaves space for image to appear.
-                Aria-hidden=true, element not displayed for assistive tech like screen reader.
-                Lazy load, load image once user gets to img placeholder within viewport.
+                Aria-hidden=true: element not displayed for assistive tech ie. screen reader.
+                Async: contine rendering, browser updates when img load complete
             -->
             <picture>
                 <source media="(max-width: 600px)" srcset="/images/landing-m.webp">
@@ -376,6 +379,7 @@
                 <p>
                     Extra content if you need it, if not you can delete this whole p tag. I usually do.
                 </p>
+                <!--Social Media Icons *6-->
             </div>
             <div class="right-section">
                 <div class="lists">
@@ -407,7 +411,8 @@
         <div class="credit">
             <span>Designed and Hand Coded by</span>
             <a href="" target="_blank" rel="noopener">Your Company Name</a>
-            <span class="copyright"> Copyright 2021 - Present</span></div>
+            <span class="copyright"> Copyright 2021 - Present</span>
+        </div>
     </footer>
 
 
