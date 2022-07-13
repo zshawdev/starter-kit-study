@@ -173,7 +173,7 @@
                 <img class="sun" aria-hidden="true" src="/images/sun.svg" decoding="async" alt="moon" width="15" height="15">
             </button>
 
-            <!--Mobile Nav toggle-->
+            <!--*Mobile Nav toggle*-->
             <button class="hamburger-menu">
                 <span aria-hidden="true"></span>
             </button>
@@ -192,11 +192,19 @@
                     <p>
                         Talk about the other services they do with keywords and locations where they serve.  Try to make this 2-3 lines tall.
                     </p>
+                    <!--noopener prevents link from having access to doc that opened it.
+                        _blank opens a new tab-->
                     <a class="button-solid" href="/contact.html" target="_blank" rel="noopener">
                         Main Call To Action
                     </a>
                 </div>
             </div>
+            <!---Picture container used to hold media queries that get specific image file
+                 according to size. img element is a back up. width and height styled inline 
+                so that browser leaves space for image to appear.
+                Aria-hidden=true, element not displayed for assistive tech like screen reader.
+                Lazy load, load image once user gets to img placeholder within viewport.
+            -->
             <picture>
                 <source media="(max-width: 600px)" srcset="/images/landing-m.webp">
                 <source media="(min-width: 601px)" srcset="/images/landing.jpg">
@@ -209,7 +217,7 @@
         <!-- ============================================ -->
 
         <section id="services" class="services">
-            <!-- Get Icons From flaticon.com -->
+            <!-- *Get Icons From flaticon.com* -->
             <div class="card">
                 <picture>
                     <img aria-hidden="true" decoding="async" src="/images/service1.svg" alt="appliance" width="48" height="48">
@@ -406,9 +414,9 @@
     <script defer src="/nav.js"></script>
     <script defer src="/dark.js"></script>
     <!--
-        This script adds a class to the body after scrolling 100px
+        *This script adds a class to the body after scrolling 100px
         and we used these body.scroll styles to create some on scroll 
-        animations with the navbar
+        animations with the navbar*
     -->
     <script defer>
         document.addEventListener('scroll', (e) => { 
