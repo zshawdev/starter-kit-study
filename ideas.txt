@@ -1,0 +1,43 @@
+
+##Ideas and todos
+
+-documentation on how to set up this project's enviroment for future web dev interns, possibly within readme
+-comment out dark/light toggle to temporary disable
+-About us page too dull, should be image with text and alternating positions, then founder message to follow. We can reuse the about pages .sidebyside class
+-Projects page could become the events page. On hover Text can overlay the image with details, then user could click to learn more. Or we could
+make cards with an image above and text description below, click to read more.
+-Nix reviews page, instead make it CCS's Store page and reuse the .sidebyside 
+-do we need sponsors on every page, if so, add to footer a container to hold them. Find way to display neatly
+-Footer needs the six social media icons.
+
+
+## Required Content and images
+
+- meta
+    -description
+    -keywords?
+    -sample image to be shared with backlinks when shared
+
+- fav icons:
+    -180x180 png
+    -32x32 png
+    -16x16 png
+    -192x192 png android-chrome
+    -384x384 png android-chrome
+
+-logo (height around 66px~), svg preferably (fiverr). 
+    Gradient was a concern earlier but we can recreate radial gradient with css with element behind logo
+
+-custom fonts if needed
+
+-color scheme
+    -primary, primaryShade(ligher version of primary), primaryDark(darker, unsaturated primary)
+
+    -current colors for reference...
+    --primary: #FFBA19; hsl 42°, 100%, 55%
+    --primaryShade: #ffd675; hsl 42°, 100%, 73%
+    --primaryDark: #805d0d; hsl 42°, 82%, 28%
+
+-hero image scaled for >600px and <600px viewport width
+
+-all other images scaled correctly considering viewport width >600px and <600px
