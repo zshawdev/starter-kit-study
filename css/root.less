@@ -3,17 +3,19 @@
 <--- -------------------------- -*/
 
 /* Mobile */
+/* If device width is greater or equal to 0em then do the following... */
 @media only screen and (min-width: 0em) {
 
-    // Website colors
+    // **Website colors
     :root {
+        /* custom properties are declared in :root and reused with var(). Prefix with '--' */
         --primary: #FFBA19;
         --primaryShade: #ffd675;
         --primaryDark: #805d0d;
         --bodyText: #1a1a1a;
     }
 
-    // Grab your fonts to locally host from https://google-webfonts-helper.herokuapp.com/fonts
+    // **Grab your fonts to locally host from https://google-webfonts-helper.herokuapp.com/fonts
     
     /* roboto-regular - latin */
     @font-face {
@@ -48,21 +50,26 @@
         padding: 0;
         font-size: 100%;
         font-family: 'Roboto', Arial, sans-serif;
+        /* custom property being utilized, see :root for declaration */
         color: var(--bodyText);
         overflow-x: hidden;
     }
 
     *, *:before, *:after {
+        /* Reset all(*) elements and their before and after pseudo-elements. Reset styles help avoid unwanted prestylings */
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 
     body {
+        /* .3s refers to transition-duration */
+        /* Typically, add transition properties to the element and set new styling on pseudo-class*/
         transition: background-color .3s;
     }
     
     .container {
+        /* Most of the html blocks are wrapped in the proper semantic element and then the content is held in a div with .container */
         position: relative;
         width: 92%;
         margin: auto;
@@ -74,6 +81,10 @@
     }
     
     p, li, a {
+        /* Divide numerator by denomenator and set to em unit type ie 27/18 = 1.125em*/
+        /* 16 is the base font size on mobile. In previous yt video, Ryan says to divide
+        all fractions by the base size. Unsure why there's inconsistency here */
+        /* "key to complete responsiveness" -ryan*/
         font-size: 18/16em;
         line-height: 27/18em;
         margin: 0;
@@ -110,14 +121,18 @@
         transition: color .3s;
         transition-delay: .1s;
 
+        /* & can help with nesting and adding more specificity to an element. Below means .button-solid:hover */
         &:hover {
             color: #fff;
             &:before {
+                /* This pseudo-element appears sandwiched between the button-solid's background layer and text because of z-index: -1.
+                 When you hover over .button-solid, :before changes width. When it expands from 0 to 100%, it creates the appearance of the background swipping left to right. */
                 width: 100%;
             }
         }
 
         &:before {
+            /* Must use 'content' property to work with :before and :after*/
             content: '';
             position: absolute;
             display: block;
@@ -134,7 +149,7 @@
         }
     }
     
-    // HIdden Screen reader skip nav button
+    // **HIdden Screen reader skip nav button
     .skip {
         position: absolute;
         top: 0;
@@ -152,7 +167,8 @@
     }
 }
 
-/* Scale full website with the viewport width */
+/* **Scale full website with the viewport width */
+/* predefine the base font-size to the view-width so everything relying on fractions and base size stays responsive.*/
 @media only screen and (min-width: 2000px) {
     body, html {
         font-size: .85vw;
@@ -176,6 +192,9 @@
         height: auto;
 
         .background-color-div {
+            /* "This div is used to overcome a z-index issue where the open
+                #navbar-menu is on top of the #navigation. This bar places itself 
+                the #navbar-menu so that menu appears behind the #navigation" */
             position: absolute;
             top: 0;
             left: 0;
@@ -200,7 +219,7 @@
                 width: auto;
                 height: 100%;
             }
-
+            /* Toggle the logo (light/dark) element because .background-color-div appears as a white bg on mobile making the light logo hard to see. */
             .light {
                 display: none;
             }
@@ -221,16 +240,19 @@
             display: block;
             background: transparent;
             padding: 0;
+            /* center menu vertically */
             top: 50%;
             transform: translateY(-50%);
             transition: top .3s;
 
+            /* hamburger lines design consisting of :before, span, :after*/
             span {
                 height: 2px;
                 width: 30/16em;
                 background-color: #000;
                 display: block;
                 position: absolute;
+                /* center menu vertically */
                 left: 50%;
                 transform: translateX(-50%);
 
@@ -269,11 +291,13 @@
             }
         }
 
-        // Hamburger Menu Open State
+        // Hamburger Menu Open State Animation
         .hamburger-menu.clicked {
+            /* .clicked class toggled in nav.js to create animation*/
             span {
                 background-color: transparent;
                 &:before {
+                    /* rotates and moves to the center where span hides*/
                     width: 100%;
                     transform: translate(-50%, -50%) rotate(225deg);
                     left: 50%;
@@ -281,6 +305,7 @@
                 }
 
                 &:after {
+                    /* rotates and moves to the center where span hides*/
                     width: 100%;
                     transform: translate(-50%, -50%) rotate(-225deg);
                     left: 50%;
@@ -310,18 +335,23 @@
 
             ul {
                 padding: 0;
+                /*3D Perspective: "distance between the Z plane and the user. The smaller the value, the closer you get from the Z plane and the more impressive the visual effect. The greater the value, the more subtle will be the effect." 
+                    https://css-tricks.com/almanac/properties/p/perspective/
+                */
                 perspective: 700px;
                 li {
                     list-style: none;
                     margin-bottom: 24/16em;
                     text-align: center;
-                    //Transition Properties
+                    //**Transition Properties
+                    /* preserve the 3d transition of the child element rather than flatten it to the parent's plane.*/
                     transform-style: preserve-3d;
                     opacity: 0;
+                    /* The final state will be translateY(0) rotateX(0). Element rotates on x plane to face the viewer and comes down from up the page. */
                     transform: translateY(-7/16em) rotateX(90deg);
                     transition: opacity .5s, transform .5s;
 
-                    //Staggar their transitions
+                    //**Staggar their transitions
                     &:nth-of-type(1) {
                         transition-delay: .1s;
                     }
@@ -349,6 +379,7 @@
 
                         // Active State
                         &.active {
+                            /* The accent colored underline passed to the active page link */
                             &:before {
                                 content: '';
                                 position: absolute;
@@ -370,12 +401,15 @@
 
         // Navbar Menu Open State
         #navbar-menu.open {
+            /* Height Calculation: Each li is about 59px. (59px * 5) + 20px = 315px */
             height: 306/16em;
             padding-top: 20/16em;
+            /* The z-index is declared so the box shadow of .background-color-div overlays ?? */
             z-index: -100;
 
             ul {
                 li {
+                    /* Final animation state, see notes above */
                     opacity: 1;
                     transform: translateY(0) rotateX(0);
                 }
